@@ -51,15 +51,18 @@ const App = () => {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="text-center mb-16"
         >
-          <h2 className="text-5xl font-bold mb-4">Innovate the Dating Experience</h2>
+          <h2 className="text-5xl font-bold mb-4"> Enhancing Women's Experience in Dating Apps </h2>
           <p className="text-xl mb-8">Join our competition to reshape the future of online dating!</p>
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="inline-block bg-[#8B5CF6] text-white px-8 py-4 rounded-full text-lg font-semibold cursor-pointer"
-          >
-            Register Now
-          </motion.div>
+          <a href="https://unstop.com/p/innovating-for-her-enhancing-womens-experience-in-dating-apps-iit-roorkee-1177999" target="_blank" rel="noopener noreferrer">
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-block bg-[#8B5CF6] text-white px-8 py-4 rounded-full text-lg font-semibold cursor-pointer"
+            >
+              Register Now
+            </motion.div>
+          </a>
+
         </motion.section>
 
         <motion.section
