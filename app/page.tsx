@@ -1,101 +1,204 @@
-import Image from "next/image";
+"use client";
+import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { Calendar, Users, Award, Clock, ChevronRight } from 'lucide-react';
 
-export default function Home() {
+const App = () => {
+  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      const now = new Date();
+      const target = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 10);
+      const difference = target.getTime() - now.getTime();
+
+      setTimeLeft({
+        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((difference / 1000 / 60) % 60),
+        seconds: Math.floor((difference / 1000) % 60)
+      });
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <div className="min-h-screen bg-white text-gray-800 font-sans">
+      <header className="bg-[#8B5CF6] text-white p-6">
+        <motion.div
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="container mx-auto flex justify-between items-center"
+        >
+          <h1 className="text-4xl font-bold">Peeple</h1>
+          <nav>
+            <ul className="flex space-x-6">
+              <li><a href="#about" className="hover:underline">About</a></li>
+              <li><a href="#rules" className="hover:underline">Rules</a></li>
+              <li><a href="#prizes" className="hover:underline">Prizes</a></li>
+              <li><a href="#timeline" className="hover:underline">Timeline</a></li>
+            </ul>
+          </nav>
+        </motion.div>
+      </header>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+      <main className="container mx-auto px-4 py-12">
+        <motion.section
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-5xl font-bold mb-4">Innovate the Dating Experience</h2>
+          <p className="text-xl mb-8">Join our competition to reshape the future of online dating!</p>
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="inline-block bg-[#8B5CF6] text-white px-8 py-4 rounded-full text-lg font-semibold cursor-pointer"
           >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
+            Register Now
+          </motion.div>
+        </motion.section>
+
+        <motion.section
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          id="about"
+          className="mb-16"
+        >
+          <h3 className="text-3xl font-bold mb-4">About the Competition</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="bg-gray-100 p-6 rounded-lg">
+              <Users className="text-[#8B5CF6] w-12 h-12 mb-4" />
+              <h4 className="text-xl font-semibold mb-2">Team Composition</h4>
+              <p>Groups of 4 students, with at least one woman per team</p>
+            </div>
+            <div className="bg-gray-100 p-6 rounded-lg">
+              <Calendar className="text-[#8B5CF6] w-12 h-12 mb-4" />
+              <h4 className="text-xl font-semibold mb-2">Duration</h4>
+              <p>1 week to complete and submit your presentation</p>
+            </div>
+          </div>
+        </motion.section>
+
+        <motion.section
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
+          id="rules"
+          className="mb-16"
+        >
+          <h3 className="text-3xl font-bold mb-4">Competition Rules</h3>
+          <ul className="list-disc pl-6 space-y-2">
+            <li>Conduct user research on women's experiences in dating apps</li>
+            <li>Propose innovative features to improve the dating experience for women</li>
+            <li>Submit a comprehensive presentation detailing your findings and ideas</li>
+            <li>Adhere to ethical guidelines and respect user privacy in your research</li>
+          </ul>
+        </motion.section>
+
+        <motion.section
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.8 }}
+          id="prizes"
+          className="mb-16"
+        >
+          <h3 className="text-3xl font-bold mb-4">Prizes</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="bg-[#8B5CF6] text-white p-6 rounded-lg text-center"
+            >
+              <Award className="w-16 h-16 mx-auto mb-4" />
+              <h4 className="text-2xl font-semibold mb-2">1st Place</h4>
+              <p className="text-3xl font-bold">₹20,000</p>
+            </motion.div>
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="bg-[#8B5CF6] text-white p-6 rounded-lg text-center"
+            >
+              <Award className="w-16 h-16 mx-auto mb-4" />
+              <h4 className="text-2xl font-semibold mb-2">2nd Place</h4>
+              <p className="text-3xl font-bold">₹10,000</p>
+            </motion.div>
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="bg-[#8B5CF6] text-white p-6 rounded-lg text-center"
+            >
+              <Award className="w-16 h-16 mx-auto mb-4" />
+              <h4 className="text-2xl font-semibold mb-2">3rd Place</h4>
+              <p className="text-3xl font-bold">₹5,000</p>
+            </motion.div>
+          </div>
+        </motion.section>
+
+        <motion.section
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 1 }}
+          id="timeline"
+          className="mb-16"
+        >
+          <h3 className="text-3xl font-bold mb-4">Competition Timeline</h3>
+          <div className="space-y-4">
+            <div className="flex items-center">
+              <ChevronRight className="text-[#8B5CF6] w-6 h-6 mr-2" />
+              <p><span className="font-semibold">Registration Opens:</span> Tomorrow</p>
+            </div>
+            <div className="flex items-center">
+              <ChevronRight className="text-[#8B5CF6] w-6 h-6 mr-2" />
+              <p><span className="font-semibold">Registration Closes:</span> In 3 days</p>
+            </div>
+            <div className="flex items-center">
+              <ChevronRight className="text-[#8B5CF6] w-6 h-6 mr-2" />
+              <p><span className="font-semibold">Competition Starts:</span> After registration closes</p>
+            </div>
+            <div className="flex items-center">
+              <ChevronRight className="text-[#8B5CF6] w-6 h-6 mr-2" />
+              <p><span className="font-semibold">Submission Deadline:</span> 1 week after start</p>
+            </div>
+          </div>
+        </motion.section>
+
+        <motion.section
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 1.2 }}
+          className="text-center"
+        >
+          <h3 className="text-3xl font-bold mb-4">Time Remaining</h3>
+          <div className="flex justify-center space-x-4">
+            <div className="text-center">
+              <p className="text-4xl font-bold text-[#8B5CF6]">{timeLeft.days}</p>
+              <p>Days</p>
+            </div>
+            <div className="text-center">
+              <p className="text-4xl font-bold text-[#8B5CF6]">{timeLeft.hours}</p>
+              <p>Hours</p>
+            </div>
+            <div className="text-center">
+              <p className="text-4xl font-bold text-[#8B5CF6]">{timeLeft.minutes}</p>
+              <p>Minutes</p>
+            </div>
+            <div className="text-center">
+              <p className="text-4xl font-bold text-[#8B5CF6]">{timeLeft.seconds}</p>
+              <p>Seconds</p>
+            </div>
+          </div>
+        </motion.section>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+
+      <footer className="bg-[#8B5CF6] text-white py-6">
+        <div className="container mx-auto text-center">
+          <p>&copy; 2024 Peeple Dating App. All rights reserved.</p>
+        </div>
       </footer>
     </div>
   );
-}
+};
+
+export default App;
