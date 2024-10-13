@@ -105,7 +105,7 @@ const App = () => {
             <div className="bg-gray-100 p-6 rounded-lg">
               <Calendar className="text-[#8B5CF6] w-12 h-12 mb-4" />
               <h4 className="text-xl font-semibold mb-2">Duration</h4>
-              <p>1 week to complete and submit your presentation</p>
+              <p>till 19th oct to complete and submit your presentation</p>
             </div>
           </div>
         </motion.section>
@@ -173,19 +173,19 @@ const App = () => {
           <div className="space-y-4">
             <div className="flex items-center">
               <ChevronRight className="text-[#8B5CF6] w-6 h-6 mr-2 flex-shrink-0" />
-              <p><span className="font-semibold">Registration Opens:</span> Tomorrow</p>
+              <p><span className="font-semibold">Registration Opens:</span> 13th oct</p>
             </div>
             <div className="flex items-center">
               <ChevronRight className="text-[#8B5CF6] w-6 h-6 mr-2 flex-shrink-0" />
-              <p><span className="font-semibold">Registration Closes:</span> In 3 days</p>
+              <p><span className="font-semibold">Registration Closes:</span> In 19th oct</p>
             </div>
             <div className="flex items-center">
               <ChevronRight className="text-[#8B5CF6] w-6 h-6 mr-2 flex-shrink-0" />
-              <p><span className="font-semibold">Competition Starts:</span> After registration closes</p>
+              <p><span className="font-semibold">Competition Starts:</span> 13th oct</p>
             </div>
             <div className="flex items-center">
               <ChevronRight className="text-[#8B5CF6] w-6 h-6 mr-2 flex-shrink-0" />
-              <p><span className="font-semibold">Submission Deadline:</span> 1 week after start</p>
+              <p><span className="font-semibold">Submission Deadline:</span> 119th oct</p>
             </div>
           </div>
         </motion.section>
