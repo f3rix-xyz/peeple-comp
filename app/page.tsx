@@ -100,7 +100,7 @@ const App = () => {
             <div className="bg-gray-100 p-6 rounded-lg">
               <Users className="text-[#8B5CF6] w-12 h-12 mb-4" />
               <h4 className="text-xl font-semibold mb-2">Team Composition</h4>
-              <p>Groups of 4 students, with at least one woman per team</p>
+              <p>Groups of 2-4 students, with at least one woman per team</p>
             </div>
             <div className="bg-gray-100 p-6 rounded-lg">
               <Calendar className="text-[#8B5CF6] w-12 h-12 mb-4" />
