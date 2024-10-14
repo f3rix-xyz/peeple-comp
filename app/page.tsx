@@ -185,7 +185,7 @@ const App = () => {
             </div>
             <div className="flex items-center">
               <ChevronRight className="text-[#8B5CF6] w-6 h-6 mr-2 flex-shrink-0" />
-              <p><span className="font-semibold">Submission Deadline:</span> 119th oct</p>
+              <p><span className="font-semibold">Submission Deadline:</span> 19th oct</p>
             </div>
           </div>
         </motion.section>
